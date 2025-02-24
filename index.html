@@ -16,7 +16,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-height: 100vh; /* dùng min-height để hỗ trợ hiển thị trên mobile */
+      min-height: 100vh; /* hỗ trợ hiển thị trên mobile */
       background-color: #fff;
     }
 
@@ -81,7 +81,7 @@
       flex-direction: column;
       align-items: center;
       width: 100%;
-      margin: 20px 0; 
+      margin: 20px 0;
     }
 
     .search-box {
@@ -97,14 +97,13 @@
     }
 
     .search-box input {
-      flex: 1;            
+      flex: 1;
       border: none;
       outline: none;
       font-size: 16px;
       padding: 8px;
     }
 
-    
     .search-box img {
       width: 24px;
       height: 24px;
@@ -119,14 +118,12 @@
       margin-left: 8px;
     }
 
-    
     .divider {
       height: 24px;
       border-left: 1px solid #dfe1e5;
       margin: 0 8px;
     }
 
-    
     .buttons {
       margin-top: 20px;
       display: flex;
@@ -161,33 +158,49 @@
       bottom: 0;
     }
 
+    /* Apps Menu: ẩn mặc định */
     .apps-menu {
       display: none;
       position: absolute;
       top: 50px;
       right: 20px;
-      width: 200px;
-      background: white;
+      width: 280px;
+      background: #fff;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      padding: 10px;
+      padding: 12px;
       border-radius: 8px;
+
+      /* Thiết lập grid, nhưng không kích hoạt hiển thị cho đến khi có class .show */
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
 
+    /* Khi có class .show, hiển thị menu dạng grid */
     .apps-menu.show {
-      display: block;
+      display: grid;
     }
 
-    .app-item {
+    .apps-menu a {
+      text-decoration: none;
+      color: #202124;
       display: flex;
+      flex-direction: column;
       align-items: center;
+      font-size: 12px;
+      transition: background 0.2s ease;
+      border-radius: 8px;
       padding: 8px;
-      cursor: pointer;
     }
 
-    .app-item img {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
+    .apps-menu a:hover {
+      background-color: rgba(0,0,0,0.05);
+    }
+
+    .apps-menu a img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 4px;
+      object-fit: cover;
     }
 
     .signin-button {
@@ -252,41 +265,75 @@
       .apps-menu {
         top: 40px;
         right: 10px;
-        width: 180px;
+        width: 240px;
       }
     }
   </style>
 </head>
 <body>
-  
+  <!-- Header với Gmail, Hình ảnh, Apps và Đăng nhập -->
   <div class="header">
     <a href="#">Gmail</a>
     <a href="#">Hình ảnh</a>
-    <div class="apps-icon" onclick="toggleAppsMenu()"><img src="https://ssl.gstatic.com/gb/images/bar/al-icon.png"></div>
+    <div class="apps-icon" onclick="toggleAppsMenu()">
+      <img src="https://ssl.gstatic.com/gb/images/bar/al-icon.png" alt="Apps">
+    </div>
     <a href="#" class="signin-button">Đăng nhập</a>
   </div>
 
-  
+  <!-- Menu ứng dụng (ẩn mặc định, hiển thị khi click) -->
   <div class="apps-menu" id="appsMenu">
-    <div class="app-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo">
-      Tìm kiếm
-    </div>
-    <div class="app-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail Icon">
-      Gmail
-    </div>
-    <div class="app-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Google_Drive_icon_%282020%29.svg" alt="Drive Icon">
-      Drive
-    </div>
-    <div class="app-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Google_Calendar_icon_%282020%29.svg" alt="Calendar Icon">
-      Lịch
-    </div>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Google_Account.svg/48px-Google_Account.svg.png" alt="Tài khoản">
+      <span>Tài khoản</span>
+    </a>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Tìm kiếm" style="width:40px; height:40px;">
+      <span>Tìm kiếm</span>
+    </a>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Google_Maps_Logo_2020.svg" alt="Maps">
+      <span>Maps</span>
+    </a>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+      <span>YouTube</span>
+    </a>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Google_News_icon.svg" alt="Tin tức">
+      <span>Tin tức</span>
+    </a>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail">
+      <span>Gmail</span>
+    </a>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Google_Meet_icon_%282020%29.svg" alt="Meet">
+      <span>Meet</span>
+    </a>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Google_Chat_icon_%282020%29.svg" alt="Trò chuyện">
+      <span>Trò chuyện</span>
+    </a>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Contacts_Icon.png" alt="Danh bạ">
+      <span>Danh bạ</span>
+    </a>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Google_Drive_icon_%282020%29.svg" alt="Drive">
+      <span>Drive</span>
+    </a>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Google_Calendar_icon_%282020%29.svg" alt="Lịch">
+      <span>Lịch</span>
+    </a>
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play" style="object-fit:contain;">
+      <span>Play</span>
+    </a>
   </div>
 
-  
+  <!-- Logo Google -->
   <div class="google-logo">
     <span class="g">G</span>
     <span class="o1">o</span>
@@ -296,29 +343,23 @@
     <span class="e">e</span>
   </div>
 
-  
+  <!-- Khung tìm kiếm -->
   <div class="search-container">
     <div class="search-box">
-      
       <img src="https://cdn-icons-png.flaticon.com/512/2811/2811790.png" alt="Search" class="icon-left">
-      
       <div class="divider"></div>
-      
       <input type="text" placeholder="Tìm kiếm trên Google">
-      
       <img src="https://img.icons8.com/ios-filled/50/000000/keyboard.png" alt="Keyboard" class="icon-right">
       <img src="https://img.icons8.com/ios-filled/50/000000/microphone.png" alt="Voice Search" class="icon-right">
       <img src="google-lens-icon.svg" alt="Google Lens" class="icon-right">
-      
     </div>
-    
     <div class="buttons">
       <button class="button">Tìm trên Google</button>
       <button class="button">Xem trang đầu tiên tìm được</button>
     </div>
   </div>
 
-  
+  <!-- Footer -->
   <div class="footer">
     <a href="#" style="text-decoration: none;">Việt Nam</a>
     <a href="#" style="text-decoration: none;">Giới thiệu</a>
@@ -335,6 +376,15 @@
       var menu = document.getElementById("appsMenu");
       menu.classList.toggle("show");
     }
+
+    // Đóng menu khi click ra ngoài
+    document.addEventListener("click", function(e) {
+      var menu = document.getElementById("appsMenu");
+      var icon = document.querySelector(".apps-icon");
+      if (!menu.contains(e.target) && !icon.contains(e.target)) {
+        menu.classList.remove("show");
+      }
+    });
   </script>
 </body>
 </html>
