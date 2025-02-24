@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Product+Sans:wght@700&display=swap');
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* dùng min-height để hỗ trợ hiển thị trên mobile */
+      background-color: #fff;
+    }
+
+    .header {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header a {
+      text-decoration: none;
+      color: #5f6368;
+      font-size: 14px;
+    }
+
+    .apps-icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    .profile-icon {
+      width: 32px;
+      height: 32px;
+      background-color: #8b5d33;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .google-logo {
+      font-family: 'Product Sans', sans-serif;
+      font-size: 80px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .google-logo span {
+      display: inline-block;
+    }
+
+    .g  { color: #4285F4; }
+    .o1 { color: #EA4335; }
+    .o2 { color: #FBBC05; }
+    .g2 { color: #4285F4; }
+    .l  { color: #34A853; }
+    .e  { color: #EA4335; }
+
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin: 20px 0; 
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      width: 90%;
+      max-width: 600px;
+      border: 1px solid #dfe1e5;
+      border-radius: 24px;
+      background-color: #fff;
+      padding: 0 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .search-box input {
+      flex: 1;            
+      border: none;
+      outline: none;
+      font-size: 16px;
+      padding: 8px;
+    }
+
+    
+    .search-box img {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    .icon-left {
+      margin-left: 4px;
+    }
+
+    .icon-right {
+      margin-left: 8px;
+    }
+
+    
+    .divider {
+      height: 24px;
+      border-left: 1px solid #dfe1e5;
+      margin: 0 8px;
+    }
+
+    
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .button {
+      background-color: #f8f9fa;
+      border: 1px solid #dfe1e5;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .button:hover {
+      background-color: #e8e9eb;
+    }
+
+    .footer {
+      width: 100%;
+      background-color: #f2f2f2;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #70757a;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .apps-menu {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 20px;
+      width: 200px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .apps-menu.show {
+      display: block;
+    }
+
+    .app-item {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .app-item img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .signin-button {
+      background-color: #1a73e8;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    /* Responsive cho màn hình nhỏ */
+    @media (max-width: 480px) {
+      .header {
+        top: 5px;
+        right: 10px;
+        gap: 10px;
+      }
+      .header a {
+        font-size: 12px;
+      }
+      .apps-icon {
+        width: 20px;
+        height: 20px;
+      }
+      .signin-button {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+      .google-logo {
+        font-size: 60px;
+        margin-bottom: 15px;
+      }
+      .search-box {
+        width: 95%;
+        padding: 0 6px;
+      }
+      .search-box input {
+        font-size: 14px;
+      }
+      .icon-left, .icon-right {
+        width: 20px;
+        height: 20px;
+      }
+      .divider {
+        height: 20px;
+        margin: 0 6px;
+      }
+      .buttons {
+        flex-direction: column;
+        margin-top: 10px;
+      }
+      .button {
+        padding: 8px;
+        font-size: 12px;
+      }
+      .footer {
+        padding: 8px;
+        font-size: 12px;
+        gap: 10px;
+      }
+      .apps-menu {
+        top: 40px;
+        right: 10px;
+        width: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="header">
+    <a href="#">Gmail</a>
+    <a href="#">Hình ảnh</a>
+    <div class="apps-icon" onclick="toggleAppsMenu()"><img src="https://ssl.gstatic.com/gb/images/bar/al-icon.png"></div>
+    <a href="#" class="signin-button">Đăng nhập</a>
+  </div>
+
+  
+  <div class="apps-menu" id="appsMenu">
+    <div class="app-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo">
+      Tìm kiếm
+    </div>
+    <div class="app-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail Icon">
+      Gmail
+    </div>
+    <div class="app-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Google_Drive_icon_%282020%29.svg" alt="Drive Icon">
+      Drive
+    </div>
+    <div class="app-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Google_Calendar_icon_%282020%29.svg" alt="Calendar Icon">
+      Lịch
+    </div>
+  </div>
+
+  
+  <div class="google-logo">
+    <span class="g">G</span>
+    <span class="o1">o</span>
+    <span class="o2">o</span>
+    <span class="g2">g</span>
+    <span class="l">l</span>
+    <span class="e">e</span>
+  </div>
+
+  
+  <div class="search-container">
+    <div class="search-box">
+      
+      <img src="https://cdn-icons-png.flaticon.com/512/2811/2811790.png" alt="Search" class="icon-left">
+      
+      <div class="divider"></div>
+      
+      <input type="text" placeholder="Tìm kiếm trên Google">
+      
+      <img src="https://img.icons8.com/ios-filled/50/000000/keyboard.png" alt="Keyboard" class="icon-right">
+      <img src="https://img.icons8.com/ios-filled/50/000000/microphone.png" alt="Voice Search" class="icon-right">
+      <img src="google-lens-icon.svg" alt="Google Lens" class="icon-right">
+      
+    </div>
+    
+    <div class="buttons">
+      <button class="button">Tìm trên Google</button>
+      <button class="button">Xem trang đầu tiên tìm được</button>
+    </div>
+  </div>
+
+  
+  <div class="footer">
+    <a href="#" style="text-decoration: none;">Việt Nam</a>
+    <a href="#" style="text-decoration: none;">Giới thiệu</a>
+    <a href="#" style="text-decoration: none;">Quảng cáo</a>
+    <a href="#" style="text-decoration: none;">Doanh nghiệp</a>
+    <a href="#" style="text-decoration: none;">Cách hoạt động của Tìm kiếm</a>
+    <a href="#" style="text-decoration: none;">Quyền riêng tư</a>
+    <a href="#" style="text-decoration: none;">Điều khoản</a>
+    <a href="#" style="text-decoration: none;">Cài đặt</a>
+  </div>
+
+  <script>
+    function toggleAppsMenu() {
+      var menu = document.getElementById("appsMenu");
+      menu.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
